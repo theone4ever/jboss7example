@@ -20,10 +20,10 @@ import com.sample.model.Property;
 @ManagedBean(name="manager")
 public class PropertyManager {
 
-    @Resource(lookup="java:jboss/infinispan/container/cluster")
+    @Resource(lookup="java:jboss/infinispan/container/web")
     private CacheContainer container;
 
-    private org.infinispan.Cache<String, Property> cache;
+    private org.infinispan.Cache<String, String> cache;
     ArrayList cacheList;
 
     private String key;
@@ -31,7 +31,7 @@ public class PropertyManager {
 
     @PostConstruct  public void start() {
         this.cache = this.container.getCache();
-        cacheList = new ArrayList<Property>();
+        cacheList = new ArrayList<String>();
     }
 
     public String getKey() {
@@ -55,7 +55,7 @@ public class PropertyManager {
         p.setKey(key);
         p.setValue(value);
 
-        this.cache.put(generateKey(),p);
+        this.cache.put(generateKey(),value);
     }
 
     public void clear() {
@@ -63,7 +63,7 @@ public class PropertyManager {
 
     }
     public List getCacheList() {
-        List<Property> dataList = new ArrayList<Property>();
+        List<String> dataList = new ArrayList<String>();
         dataList.addAll(cache.values());
         return dataList;
 
