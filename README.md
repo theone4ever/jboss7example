@@ -37,7 +37,8 @@ Then deploy the package:
 
 Then try to access the example,
 [instance 1](http://localhost:8080/jboss7example/home.xhtml "link") ,
-[instance 2](http://localhost:8180/jboss7example/home.xhtml "link". Play with it and see how cool infinispan is.
+[instance 2](http://localhost:8180/jboss7example/home.xhtml "link").
+Play with it and see how cool infinispan is.
 
 
 Tips to use infinispan
@@ -45,19 +46,19 @@ Tips to use infinispan
 1. There is no need to package inifinispan-core package in war or ear file, but depend on the infinispan-core.jar in
 jboss modeules. But to use it, you need to add a depedency in manifest file of war or ear package, here is the tricky in
 pom.xml:
-```xml
+```
     <plugin>
-    <artifactId>maven-war-plugin</artifactId>
-    <version>2.1.1</version>
-    <configuration>
-    <!-- Java EE 6 doesn't require web.xml, Maven needs to catch up! -->
-    <failOnMissingWebXml>false</failOnMissingWebXml>
-    <archive>
-    <manifestEntries>
-    <Dependencies>org.infinispan export</Dependencies>
-    </manifestEntries>
-    </archive>
-    </configuration>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.1.1</version>
+        <configuration>
+        <!-- Java EE 6 doesn't require web.xml, Maven needs to catch up! -->
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+        <archive>
+            <manifestEntries>
+                <Dependencies>org.infinispan export</Dependencies>
+            </manifestEntries>
+        </archive>
+        </configuration>
     </plugin>
 ```
 2. Don't use jboss 7.1.1.Final, only EAP 6 works!!!
