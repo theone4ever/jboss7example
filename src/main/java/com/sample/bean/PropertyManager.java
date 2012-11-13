@@ -23,7 +23,7 @@ public class PropertyManager {
     @Resource(lookup="java:jboss/infinispan/container/web")
     private CacheContainer container;
 
-    private org.infinispan.Cache<String, String> cache;
+    private org.infinispan.Cache<String, Property> cache;
     ArrayList cacheList;
 
     private String key;
@@ -31,7 +31,7 @@ public class PropertyManager {
 
     @PostConstruct  public void start() {
         this.cache = this.container.getCache();
-        cacheList = new ArrayList<String>();
+		cacheList = new ArrayList<Property>();
     }
 
     public String getKey() {
@@ -55,7 +55,7 @@ public class PropertyManager {
         p.setKey(key);
         p.setValue(value);
 
-        this.cache.put(generateKey(),value);
+		this.cache.put(generateKey(), p);
     }
 
     public void clear() {
@@ -63,7 +63,7 @@ public class PropertyManager {
 
     }
     public List getCacheList() {
-        List<String> dataList = new ArrayList<String>();
+		List<Property> dataList = new ArrayList<Property>();
         dataList.addAll(cache.values());
         return dataList;
 
