@@ -46,7 +46,7 @@ Tips to use infinispan
 jboss modeules. But to use it, you need to add a depedency in manifest file of war or ear package, here is the tricky in
 pom.xml:
 
-    <plugin>
+    "<plugin>
     <artifactId>maven-war-plugin</artifactId>
     <version>2.1.1</version>
     <configuration>
@@ -58,7 +58,7 @@ pom.xml:
     </manifestEntries>
     </archive>
     </configuration>
-    </plugin>
+    </plugin>"
 
 2. Don't use jboss 7.1.1.Final, only EAP 6 works!!!
 
