@@ -45,7 +45,7 @@ Tips to use infinispan
 1. There is no need to package inifinispan-core package in war or ear file, but depend on the infinispan-core.jar in
 jboss modeules. But to use it, you need to add a depedency in manifest file of war or ear package, here is the tricky in
 pom.xml:
-<pre><code>
+
     <plugin>
     <artifactId>maven-war-plugin</artifactId>
     <version>2.1.1</version>
@@ -59,6 +59,6 @@ pom.xml:
     </archive>
     </configuration>
     </plugin>
-</pre></code>
+
 2. Don't use jboss 7.1.1.Final, only EAP 6 works!!!
 
